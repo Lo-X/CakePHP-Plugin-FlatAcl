@@ -1,4 +1,17 @@
-
+/**
+ * A CakePHP Plugin by Loïc Boutter (http://www.loicboutter.fr)
+ *
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Loïc Boutter (http://www.loicboutter.fr)
+ * @link          http://www.loicboutter.fr
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ */
 
 CREATE TABLE IF NOT EXISTS `acos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
