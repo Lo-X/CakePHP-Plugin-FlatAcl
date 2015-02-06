@@ -64,10 +64,11 @@ User the _Download as Zip_ button and paste the plugin into `app/Plugin` or clon
 
 In `app/Config/bootstrap.php`, enable FlatAcl or all Plugins :
 
-    <?php
+```php 
     CakePlugin::load('FlatAcl');
     // or
     CakePlugin::loadAll();
+```
 
 ### Database
 
@@ -77,7 +78,7 @@ Use the `app/Plugins/FlatAcl/Config/Schema/` files to create the required tables
 
 Open `app/Controller/AppController.php` and add the `FlatAclComponent` to the list of Components :
 
-    <?php
+```php 
     class AppController extends Controller {
     
         public $components = [
@@ -87,6 +88,7 @@ Open `app/Controller/AppController.php` and add the `FlatAclComponent` to the li
     
         ...
     }
+```
 
 ### Fill the database
 
@@ -104,12 +106,13 @@ We have the following AROs and ACOs tables :
 |   Group    | 2 | Users          |
 
 | acos table |   |       |
+|------------|---|-------|
 |     -      | - | Forum |
 |     -      | - | News  |
 
 We can set the permissions in a controller doing :
 
-    <?php  
+```php 
     // ...
     
     $this->FlatAcl->allow(['model' => 'Group', 'id' => 2], 'News', ['read']);  // Allow Users to read the News only
@@ -118,12 +121,14 @@ We can set the permissions in a controller doing :
     $this->FlatAcl->allow('Administrators', 'News', '*'); // Give Administrators all permissions over the News
     $this->FlatAcl->allow('Administrators', 'Forum', '*'); // Give Administrators all permissions over the Forum
     $this->FlatAcl->deny('Administrators', 'Forum', 'delete'); // Deny Administrators the permissions to delete things on the Forum
+```
+
 
 ### Check the permissions
 
 Now that the database is full, we just have to check the permissions before we allow a User to do some actions.
 
-    <?php
+```php 
     // ...
     
     public function beforeFilter() {
@@ -142,6 +147,7 @@ Now that the database is full, we just have to check the permissions before we a
             return $this->redirect($this->referer());
         }
     }
+```
 
 ### And it's done !
 
