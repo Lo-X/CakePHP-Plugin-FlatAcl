@@ -123,6 +123,7 @@ class Permission extends AppModel {
 	 * @return bool Success
 	 */
 	public function allow($aro, $aco, $actions = '*', $value = true) {
+		$this->id = null;
 		$permissionKeys = $this->getAcoKeys($this->schema());	// Retrieve actions in table schema
 		$permissions = $this->getAclLink($aro, $aco); 			// Retrieve ACO data, including the list of AROs and their permissions
 		$save = [];
