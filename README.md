@@ -64,6 +64,7 @@ User the _Download as Zip_ button and paste the plugin into `app/Plugin` or clon
 
 In `app/Config/bootstrap.php`, enable FlatAcl or all Plugins :
 
+    <?php
     CakePlugin::load('FlatAcl');
     // or
     CakePlugin::loadAll();
@@ -76,6 +77,7 @@ Use the `app/Plugins/FlatAcl/Config/Schema/` files to create the required tables
 
 Open `app/Controller/AppController.php` and add the `FlatAclComponent` to the list of Components :
 
+    <?php
     class AppController extends Controller {
     
         public $components = [
@@ -96,14 +98,20 @@ Once you've set your AROs and ACOs you can use the plugin to link them together.
 
 We have the following AROs and ACOs tables :
 
-| Group | 1 | Administrators |
-| Group | 2 | Users          |
+| aros table |   |                |
+|------------|---|----------------|
+|   Group    | 1 | Administrators |
+|   Group    | 2 | Users          |
 
-| - | - | Forum |
-| - | - | News  |
+| acos table |   |       |
+|     -      | - | Forum |
+|     -      | - | News  |
 
 We can set the permissions in a controller doing :
 
+    <?php  
+    // ...
+    
     $this->FlatAcl->allow(['model' => 'Group', 'id' => 2], 'News', ['read']);  // Allow Users to read the News only
     $this->FlatAcl->allow('Users', 'Forum', ['read', 'create']); // Allow users to read and create in the Forum
     
@@ -115,6 +123,9 @@ We can set the permissions in a controller doing :
 
 Now that the database is full, we just have to check the permissions before we allow a User to do some actions.
 
+    <?php
+    // ...
+    
     public function beforeFilter() {
         parent::beforeFilter();
     
