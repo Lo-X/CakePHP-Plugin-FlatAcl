@@ -83,7 +83,7 @@ Open `app/Controller/AppController.php` and add the `FlatAclComponent` to the li
     
         public $components = [
             'FlatAcl.FlatAcl',
-            <Whatever ther component you need>
+            <Whatever other component you need>
         ];
     
         ...
